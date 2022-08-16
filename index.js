@@ -82,15 +82,7 @@ app.post('/clock', async(req, res) => {
           
   })
 
-// //   POST API TO ADD reservation
-// app.post('/reserve', async(req, res) => {
-//   const newhotel = req.body; 
-//   const result = await reservecollection.insertOne(newhotel);
-//   console.log('hitting the post',req.body);
-//   console.log('added hotel', result)
-//   res.json(result);
-        
-// })
+
 //   // POST API TO ADD BOOKING OF ANY ROOM 
 app.post('/clockbooking', async(req, res) => {
   const newroom = req.body; 
