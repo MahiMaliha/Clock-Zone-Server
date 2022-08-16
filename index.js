@@ -30,7 +30,6 @@ app.get('/clock', async(req, res) => {
     res.send(hotels);
 })
 
-
 // GET API FOR my BOOKED ROOMS & all booked rooms
 app.get('/clockbooking', async(req, res) => {
   let query = {};
@@ -49,8 +48,8 @@ app.get('/clock/:id', async(req,res)=>{
   const query = {_id:ObjectId(id)};
   const hotel = await clockcollection.findOne(query);
   res.json(hotel);
-
 })
+
  // get api for all reviews 
 app.get('/reviews', async(req,res)=>{
   const cursor = reviewCollection.find({});
@@ -62,7 +61,6 @@ app.get('/reviews', async(req,res)=>{
 app.post('/reviews', async(req,res)=>{
   const review = req.body;
   console.log('hit the post api',review);
-
   const result = await reviewCollection.insertOne(review);
    res.json(result)
 
@@ -74,8 +72,7 @@ app.post('/clock', async(req, res) => {
     const result = await clockcollection.insertOne(newhotel);
     console.log('hitting the post',req.body);
     console.log('added hotel', result)
-    res.json(result);
-          
+    res.json(result);       
   })
 
   // POST API TO ADD BOOKING OF ANY ROOM 
@@ -83,27 +80,26 @@ app.post('/clockbooking', async(req, res) => {
   const newroom = req.body; 
   const result = await clockbookingcollection.insertOne(newroom);
   console.log('hitting the post',req.body);      
-  res.json(result);
-        
+  res.json(result);       
 }) 
-//   // POST API FOR USERS 
+
+  // POST API FOR USERS 
 app.post('/users', async(req, res)=>{
    const user = req.body;
   const result = await userscollection.insertOne(user);
   console.log('added user', result)
    res.json(result);
        })
+
        // post api for posting reviews 
 app.post('/reviews', async(req,res)=>{
   const review = req.body;
   console.log('hit the post api',review);
-
   const result = await reviewCollection.insertOne(review);
    res.json(result)
-
 }); 
       
-// // get users by their email address and make an user admin 
+ // get users by their email address and make an user admin 
 app.get('/users/:email', async(req,res)=>{
   const email = req.params.email;
   const query = {email:email};
@@ -125,7 +121,7 @@ app.put('/users', async (req, res)=>{
    res.json(result);
  })
 
-// // make an user admin 
+ // make an user admin 
 app.put('/users/admin', async (req, res)=>{
   const user = req.body;
   console.log('put', user);
@@ -134,10 +130,8 @@ app.put('/users/admin', async (req, res)=>{
   const result = await userscollection.updateOne(filter,updateDoc);
   res.json(result);
 })
-
     } 
-    finally {
-      
+    finally {   
     }
   }
   run().catch(console.dir);
@@ -145,7 +139,6 @@ app.put('/users/admin', async (req, res)=>{
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
