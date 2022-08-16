@@ -45,8 +45,6 @@ if(email){
     res.send(room);
 })
 
-
-
 // GET API FOR SHOWING INDIVIDUAL ROOM DETAILS 
 app.get('/clock/:id', async(req,res)=>{
   const id = req.params.id;
@@ -55,7 +53,7 @@ app.get('/clock/:id', async(req,res)=>{
   res.json(hotel);
 
 })
-// // get api for all reviews 
+ // get api for all reviews 
 app.get('/reviews', async(req,res)=>{
   const cursor = reviewCollection.find({});
   const reviews = await cursor.toArray();
@@ -72,7 +70,7 @@ app.post('/reviews', async(req,res)=>{
 
 });
 
-// //   POST API TO ADD clock 
+ //   POST API TO ADD clock 
 app.post('/clock', async(req, res) => {
     const newhotel = req.body; 
     const result = await clockcollection.insertOne(newhotel);
@@ -82,8 +80,7 @@ app.post('/clock', async(req, res) => {
           
   })
 
-
-//   // POST API TO ADD BOOKING OF ANY ROOM 
+  // POST API TO ADD BOOKING OF ANY ROOM 
 app.post('/clockbooking', async(req, res) => {
   const newroom = req.body; 
   const result = await clockbookingcollection.insertOne(newroom);
